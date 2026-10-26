@@ -1,3 +1,6 @@
+from src.modelos.prompt_02 import Prompt_02
+from src.modelos.prompt_01 import Prompt
+from src.modelos.modelo_llama import Modelollama
 from src.modelos.modelo_google import ModeloGoople
 from src.modelos.modelo_groq import ModeloGroq
 from src.modelos.modelo_local import ModeloLocal
@@ -24,6 +27,9 @@ class Menu_Principal():
         print("1. Modelo Google API KEY")
         print("2. Modelo Groq API KEY")
         print("3. Modelo Local")
+        print("4. Modelo llama")
+        print("5. Prompt 01")
+        print("6. Prompt 02")
         print("0. Salir")
 
     def ejecutar_opcion(self):
@@ -52,9 +58,28 @@ class Menu_Principal():
                     prompt = input("Ingrese el prompt para el modelo Local: ")  
                     respuesta = modelo_local.generar_respuesta(prompt)
                     print(f"Respuesta del modelo Local: ")
-                    self.console.print(Markdown(respuesta))          
+                    self.console.print(Markdown(respuesta))
 
-                    # Lógica para la Opción 2
+                elif self.opcion == "4":
+                    modelo_llama = Modelollama()
+                    prompt = input("Ingrese el prompt para el modelo Llama: ")  
+                    respuesta = modelo_llama.generar_respuesta(prompt)
+                    print(f"Respuesta del modelo Llama: ")
+                    self.console.print(Markdown(respuesta)) 
+
+                elif self.opcion == "5":
+                    prompt_model = Prompt()
+                    prompt = input("Ingrese el prompt para el modelo Llama: ")  
+                    respuesta = prompt_model.generar_respuesta(prompt)
+                    print(f"Respuesta del prompt 01: ")
+                    self.console.print(Markdown(respuesta))
+
+                elif self.opcion == "6":    
+                    prompt_model_02 = Prompt_02()
+                    respuesta = prompt_model_02.generar_respuesta()
+                    print(f"Respuesta del prompt 02: ")
+                    self.console.print(Markdown(respuesta)) 
+
                 elif self.opcion == "0":
                     print("Saliendo del menú principal...")
                     break
