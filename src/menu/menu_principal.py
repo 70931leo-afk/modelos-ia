@@ -1,3 +1,5 @@
+from src.modelos.modelo_conectar import Prompt_Conexion
+from src.modelos.modelo_roles import Prompt_Roles
 from src.modelos.prompt_02 import Prompt_02
 from src.modelos.prompt_01 import Prompt
 from src.modelos.modelo_llama import Modelollama
@@ -28,8 +30,10 @@ class Menu_Principal():
         print("2. Modelo Groq API KEY")
         print("3. Modelo Local")
         print("4. Modelo llama")
-        print("5. Prompt 01")
-        print("6. Prompt 02")
+        print("5. Prompt 01_basico")
+        print("6. Prompt 02_template")
+        print("7. Prompt 03_modelos_roles")
+        print("8. Prompt conexion")
         print("0. Salir")
 
     def ejecutar_opcion(self):
@@ -78,7 +82,18 @@ class Menu_Principal():
                     prompt_model_02 = Prompt_02()
                     respuesta = prompt_model_02.generar_respuesta()
                     print(f"Respuesta del prompt 02: ")
-                    self.console.print(Markdown(respuesta)) 
+                    self.console.print(Markdown(respuesta))
+
+                elif self.opcion == "7":    
+                    prompt_roles = Prompt_Roles()
+                    respuesta = prompt_roles.generar_respuesta()
+                    print(f"Respuesta del prompt roles: ")
+                    self.console.print(Markdown(respuesta))
+                elif self.opcion == "8":    
+                    prompt_conexion = Prompt_Conexion()
+                    respuesta = prompt_conexion.generar_respuesta()
+                    print(f"Respuesta del prompt conexion: ")
+                    self.console.print(Markdown(respuesta))
 
                 elif self.opcion == "0":
                     print("Saliendo del menú principal...")
